@@ -1,8 +1,11 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './App'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false//關閉生產提示
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el:'#app',
+  // render: h => h(App),
+  comments:{App},
+  template:`<App/>`
+})
