@@ -1,20 +1,81 @@
 <template>
-  <div> 
-    <h1 class="welcome">歡迎學習前端最火的框架Vue</h1>
-    <HelloWorld/>
+  <div class="todo-container">
+      <div class="todo-wrap">
+          <!-- 頭部 -->
+          <Header :addTodo="addTodo"/>
+          <!-- 列表 -->
+          <List :todos="todos"/>
+          <!-- 底部-->
+          <Footer/>
+      </div>
   </div>
 </template>
 
 <script>
-  //引入App外殼組件
-  import HelloWorld from './components/HelloWorld.vue'
-  export default {
-    components:{HelloWorld}
-  }
+    //引入組件
+    import Header from './components/Header'
+    import List from './components/List'
+    import Footer from './components/Footer'
+    export default {
+        name:'App',
+        components:{Header,List,Footer},//註冊組件
+        data(){//數據
+            return{
+                todos:[
+                    {id:'001',name:'抽菸',done:true},
+                    {id:'002',name:'喝酒',done:false},
+                    {id:'003',name:'燙頭',done:true},
+                    {id:'004',name:'敲代碼',done:true},
+                ]
+            }
+        },
+        methods:{
+            //添加一個todo
+            addTodo(todoObj){
+                this.todos.unshift(todoObj)
+            }
+        }
+        
+    }
 </script>
 
 <style>
-  .welcome{
-    background-color: gray;
-  }
+  /* base */
+    body{
+        background-color: #fff;
+    }
+
+    .btn{
+        display: inline-block;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        box-shadow: inset 0 1px rgba(255, 255, 255,0.2), 0 1px 2px rgba(0, 0, 0,0.5);
+        border-radius: 4px;
+    }
+    .btn-danger{
+        color: #fff;
+        background-color: #da4f49;
+    }
+    .btn-danger:hover{
+        color: #fff;
+        background-color: #bd362f;
+    }
+    .btn:focus{
+        outline: none;
+    }
+
+    .todo-container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    .todo-container .todo-wrap{
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }  
 </style>
