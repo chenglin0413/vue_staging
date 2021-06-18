@@ -4,7 +4,11 @@
           <!-- 頭部 -->
           <Header :addTodo="addTodo"/>
           <!-- 列表 -->
-          <List :todos="todos"/>
+          <List 
+          :todos="todos" 
+          :updateTodo="updateTodo"
+          :deleteTodo="deleteTodo"
+          />
           <!-- 底部-->
           <Footer/>
       </div>
@@ -33,7 +37,23 @@
             //添加一個todo
             addTodo(todoObj){
                 this.todos.unshift(todoObj)
+            },
+            //更新一個todo, 用id去更新
+            // updateTodo(id,done){
+            //     this.todos = this.todos.map((todo)=>{
+            //         if(id===todo.id) return {...todo,done}
+            //         else return todo
+            //     })
+            // }
+            //更新一個todo, 用index去更新
+            updateTodo(index,done){
+                this.todos[index].done = done
+            },
+            //刪除一個todo, 用index去刪除
+            deleteTodo(index){
+                this.todos.splice(index,1)
             }
+            
         }
         
     }

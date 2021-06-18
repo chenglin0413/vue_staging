@@ -1,6 +1,13 @@
 <template>
   <ul class="todo-main">
-     <Item v-for="t in todos" :key="t.id" :todo="t"/>
+     <Item 
+     v-for="(todoObj,index) in todos" 
+     :key="todoObj.id" 
+     :todo="todoObj"
+     :updateTodo="updateTodo"
+     :deleteTodo="deleteTodo"
+     :index="index"
+     />
      
   </ul>
 </template>
@@ -10,7 +17,7 @@
     export default {
         name:'List',
         components:{Item},
-        props:['todos']//聲明接收props,聲明後，可以在vc上找得到
+        props:['todos','updateTodo','deleteTodo']//聲明接收props,聲明後，可以在vc上找得到
     }
 </script>
 

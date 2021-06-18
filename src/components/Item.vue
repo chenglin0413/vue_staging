@@ -1,17 +1,51 @@
 <template>
-    <li>
+    <li 
+        @mouseenter="isEnter = true"
+        @mouseleave="isEnter = false"
+        :class="{'high-light':isEnter}"
+        
+    >
         <label >
-            <input type="checkbox" :checked="todo.done"/>
+            <input type="checkbox" :checked="todo.done" @click="update(index,$event)"/>
             <span>{{todo.name}}</span>
         </label>
-        <button class="btn btn-danger" style="display:none">刪除</button>
+        <button 
+            class="btn btn-danger" 
+            :style="{display:isEnter ? 'block':'none' }"
+            @click="deleteT(index)"
+        >刪除</button>
     </li>
 </template>
 
 <script>
 export default {
     name:'Item',
-    props:['todo']
+    props:['todo','updateTodo','deleteTodo','index'],
+    data(){
+        return{
+            isEnter:false //標示鼠標是否移入
+        }
+    },
+    methods:{
+        //用id去更新
+        // update(id,event){
+        //     console.log(id,event.target.checked)
+        //     //通知App去更新這個todo
+        //     const{checked} = event.target
+        //     this.upadateTodo(id,checked)
+        // }
+        //用index去更新
+        update(index,event){
+            console.log(index,event.target.checked)
+            //通知App去更新這個todo
+            const{checked} = event.target
+            this.updateTodo(index,checked)
+        },
+        deleteT(index){ 
+            if(confirm('確定刪除嗎?'))
+            this.deleteTodo(index)
+        }
+    }
 }
 </script>
 
@@ -43,5 +77,8 @@ export default {
     }
     li:last-child{
         border-bottom: none;
+    }
+    .high-light{
+        background-color: #ddd;
     }
 </style>
