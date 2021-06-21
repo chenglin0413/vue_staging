@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <title>Document</title>
+</head>
+<body>
+    <h1>sessionStorage</h1>
+    <button id="btn1">保存數據到</button>
+    <button id="btn2">讀取數據</button>
+    <button id="btn3">刪除數據</button>
+    <button id="btn4">清空數據</button>
+
+
+    <script type="text/javascript">
+    const btn1 = document.getElementById('btn1')
+    const btn2 = document.getElementById('btn2')
+    const btn3 = document.getElementById('btn3')
+    const btn4 = document.getElementById('btn4')
+
+    const arr = [1,3,5,7,9]
+    const p = {name:'老劉',age:12}
+    btn1.onclick = () => {
+        sessionStorage.setItem('person',JSON.stringify(p))
+        sessionStorage.setItem('somedatan',JSON.stringify(arr))
+    }
+    btn2.onclick = () => {
+        const result =  sessionStorage.getItem('person')
+        try {
+            //嘗試著解析，如果沒問題就正常輸出。
+            JSON.parse(result)
+        }catch(error){
+            //一旦解析出錯，清空該組數據。
+            console.log(error.message)
+            sessionStorage.removeItem('person')
+        }
+        console.log(result)
+    }
+    btn3.onclick = () => {
+        sessionStorage.removeItem('person')
+    }
+    btn4.onclick = () =>{
+        sessionStorage.clear()
+    }
+    </script>
+</body>
+</html>

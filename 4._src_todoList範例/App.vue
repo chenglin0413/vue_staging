@@ -27,18 +27,13 @@
         name:'App',
         components:{Header,List,Footer},//註冊組件
         data(){//數據
-            const localData = localStorage.getItem('todos')
-            let todos //變數
-            try {
-                //嘗試解析localStorage中的數據，如有數據，直接使用；無數據，使用空陣列。
-                todos = JSON.parse(localData) || []
-            } catch (error) {
-               alert('localStorage異常，數據以重置')
-               localStorage.removeItem('todos')
-               todos = []
-            }
             return{
-                todos,
+                todos:[
+                    {id:'001',name:'抽菸',done:true},
+                    {id:'002',name:'喝酒',done:false},
+                    {id:'003',name:'燙頭',done:true},
+                    {id:'004',name:'敲代碼',done:true},
+                ]
             }
         },
         methods:{
@@ -74,14 +69,6 @@
                 })
             }
 
-        },
-        watch:{
-            todos:{
-                deep:true,//開啟深度監視
-                handler(value){
-                    localStorage.setItem('todos',JSON.stringify(value))
-                }
-            }
         }
         
     }

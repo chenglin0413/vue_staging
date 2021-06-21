@@ -76,11 +76,8 @@
 
         },
         watch:{
-            todos:{
-                deep:true,//開啟深度監視
-                handler(value){
-                    localStorage.setItem('todos',JSON.stringify(value))
-                }
+            todos(value){
+                localStorage.setItem('todos',JSON.stringify(value))
             }
         }
         
