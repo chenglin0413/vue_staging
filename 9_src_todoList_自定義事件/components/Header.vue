@@ -16,14 +16,14 @@ export default {
             name:'',
         }
     },
-    props:['addTodo'],//接收父親傳進來的addTodo 方法
     methods:{
         add(){
+            //校驗數據
             if(!this.name.trim()) return alert('輸入不能為空')
             //根據用戶的輸入生成一個todo對象
             const todoObj = {id:Date.now(),name:this.name,done:false}
-            //通知App在data中去添加一個todo
-            this.addTodo(todoObj)
+            //使用自定義事件去通知App在data中去添加一個todo
+            this.$emit('add-todo',todoObj)
             //清空輸入
             this.name = ''
         }

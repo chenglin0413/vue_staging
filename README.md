@@ -74,3 +74,40 @@
            xxxxStroage.getItem(xxx)如果xxx對應的value獲取不到，那麼getItem的返回值是null
            JSON.parse(null)的結果依然是null
       
+
+
+## 8. 自定義事件
+    (1). 綁定自定義事件:
+        第一種方式:
+            <Demo @haha="test"/>
+        第二種方式:
+            <Demo ref="demo/>
+            mouted中:this.$refs.demo.$on('haha',this.test)
+    (2). 觸發自定義事件:
+        this.$ref.header.$on('add-todo',this.addTodo)
+    (3). 備註:
+        1. A組件想讓B組件給自己船東西，那麼就要給B組件綁定自定義事件
+        2. 自定義鍵的回調在哪，哪才能接受到數據(參考第一點)
+        3. 適用於子 ===>父傳遞數據
+
+## 9. 全局事件總線(GlobalEventBus)
+    組件間通信的一種方式，適用於任意組件間通信
+    (1). 安裝全局事件總線，在main.js中配置
+        new Vue({
+            beforeCreate(){
+                Vue.prototype.$bus = this // 安裝事件總線
+            },
+            el:'#app',
+            render:h => h(App)
+        })
+    (2). 需要接受數據的組件中，給$bus綁定自定義事件
+        mounted(){
+            this.$bus.$on('xxxx',this.yyyy)
+        }
+    (3). 要提供數據的組件中觸發事件:
+        this.$bus.$emit('xxxx',數據)
+    (4).備註:
+        1. 誰接數據，誰就$on('xxx-xxx',this.yyyy)
+        2. 誰傳述具，誰就$emit('xxx-xxx',數據) 
+        3. 上方的數據可以傳遞多個，例如$emit('xxx-xxx',數據1,數據2,數據3)
+        但一般傳遞多個的時候，我們包裝成一個對象傳遞
