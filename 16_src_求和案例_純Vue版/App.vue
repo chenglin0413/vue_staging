@@ -10,9 +10,6 @@ import Count from './components/Count'
 export default {
   components: { Count },
     name:'App',
-    mounted(){
-      console.log('vc',this)
-    }
 }
 </script>
 

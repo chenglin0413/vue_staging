@@ -104,6 +104,8 @@
         mounted(){
             this.$bus.$on('xxxx',this.yyyy)
         }
+        備註 : 上方的yyyy ，若配置在當前組件的methods中，則this是當前組件vc，
+               上方的yyyy ，若直接寫函數，則this是$bus
     (3). 要提供數據的組件中觸發事件:
         this.$bus.$emit('xxxx',數據)
     (4).備註:
@@ -111,3 +113,16 @@
         2. 誰傳述具，誰就$emit('xxx-xxx',數據) 
         3. 上方的數據可以傳遞多個，例如$emit('xxx-xxx',數據1,數據2,數據3)
         但一般傳遞多個的時候，我們包裝成一個對象傳遞
+
+## 10. 插槽
+    作用 : 父祖件向子組件指定位置中插入html結構
+    分類: 
+        默認插槽: <slot></slot>
+        命名插槽: <slot name="s1"></slot>
+    使用: 
+        父組件中:
+            <template slot="s1>
+                具體html結構
+            </template>
+        子組件中:
+            <slot></slot> 或 <slot name="s1"></slot> 
