@@ -58,9 +58,6 @@
                         }
                 })             
             },
-        },
-        beforeDestroy(){
-            console.log('Message將要銷毀')
         }
     }
 </script>

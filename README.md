@@ -128,4 +128,20 @@
             <slot></slot> 或 <slot name="s1"></slot> 
 
 
-## 
+## 12. 求和案例vuex版
+    (1). 項目根目錄創建 : vuex/store.js
+        1.1 應用Vuex插件
+        1.2 創建store並管理: store , actions , mutations
+    (2). 組件中讀取狀態: $store.state.xxxx
+    (3). 組件中更新狀態: $store.dispatch('動作名',數據)
+    (4). actions中可以寫業務邏輯，開啟異步任務，若actions中
+
+
+## 14. Vuex 優化版
+優化1. :將$store.stata.xxxx 寫成computed
+優化2. :
+    使用: mapState,mapGetters 自動生成原本我們親自再computed中寫的屬性
+    使用: mapMutations, mapActions自動生成原本我們親自在methods中寫的回調
+    注意 : 以上所有mapXXXX方法在使用時:
+        1. 若組件中用的名字 等於 actions , state, mutations, getters中的名字，可以簡寫成數組
+        2. 若組件中用的名字 不等於 actions , state, mutations, getters中的名字，要寫成對象

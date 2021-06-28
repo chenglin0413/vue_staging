@@ -15,8 +15,6 @@
                         content:msg.content,
                     }
                 }">{{msg.title}}</router-link>&nbsp;&nbsp;
-                <button @click="pushShow(msg)">push查看</button>
-                <button @click="replaceShow(msg)">replace查看</button>
             </li>
         </ul>
         <hr>
@@ -35,32 +33,6 @@
                     {id:'003',title:'消息3',content:'愛燙頭'},
                 ]
             }
-        },
-        methods:{
-            pushShow(msg){
-                // console.log(this.$router)
-                this.$router.push({
-                        name:'xiangqing',
-                        params:{id:msg.id},
-                        query:{
-                            title:msg.title,
-                            content:msg.content,
-                        }
-                    })             
-            },
-            replaceShow(msg){
-                 this.$router.replace({
-                        name:'xiangqing',
-                        params:{id:msg.id},
-                        query:{
-                            title:msg.title,
-                            content:msg.content,
-                        }
-                })             
-            },
-        },
-        beforeDestroy(){
-            console.log('Message將要銷毀')
         }
     }
 </script>

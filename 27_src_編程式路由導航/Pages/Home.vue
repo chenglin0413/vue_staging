@@ -10,10 +10,7 @@
                   <router-link replace class="list-group-item" active-class="active" to="/home/message">Message</router-link>
               </li>
           </ul>
-          <!-- keep-alive 可以讓路由組件切換時，不銷毀， include配置的是組件本身的名 -->
-          <keep-alive include="News">
-              <router-view></router-view>      
-          </keep-alive>
+          <router-view></router-view>
       </div>
   </div>
 </template>

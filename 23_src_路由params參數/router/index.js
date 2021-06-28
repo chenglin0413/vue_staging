@@ -21,21 +21,9 @@ const router = new VueRouter({
                     component:Message,
                     children:[
                         {
-                            // path:'detail/:id/:title/:content',//聲明接收params參數
-                            // path:'detail',//query參數無須聲明即可接收
-                            path:'detail/:id',//同時接收params和query，要先聲明params
+                            //聲明接收params參數
+                            path:'detail/:id/:title/:content',
                             component:Detail,
-                            name:'xiangqing',
-
-                            // props :{carName :'馬自達。阿特茲'} //通過props映射自定義的靜態數據 
-                            // props:true,//映射params參數為props傳給路由組件
-                            props(route){//此處接收到的route是vc或vm身上的$route
-                                    // console.log(route)
-                                    const{ id } = route.params
-                                    const{ title,content } = route.query
-                                    return{id,title,content}
-                                }
-                                                 
                         },
                     ]
                 },
