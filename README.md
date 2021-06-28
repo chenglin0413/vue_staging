@@ -126,3 +126,6 @@
             </template>
         子組件中:
             <slot></slot> 或 <slot name="s1"></slot> 
+
+
+## 

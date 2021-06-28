@@ -17,10 +17,6 @@
         <div class="panel">
           <div class="panel-body">
            <router-view></router-view>
-
-           <!-- 若匹配多個路由組件，需要配置name屬性 -->
-           <!-- <router-view name="h1"></router-view>
-           <router-view name="h2"></router-view> -->
           </div>
         </div>
       </div>

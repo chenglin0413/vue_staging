@@ -10,40 +10,36 @@ Vue.use(Vuex)
 
 //初始化狀態,要寫成一個對象，包含n組key-value,因為該state要管理n多個組件的狀態
 const state = {
-    sum:99
+    sum:0
 }
 
 //創建一個actions,值為一個對象，包含 n個響應組件"動作"的函數
 const actions = {
-    jia(context,value){//context是一個mini版的$store, 我要用context.commit()去通知Mutations加工狀態
+
+    //context是一個mini版的$store, 我要用context.commit()去通知Mutations加工狀態
+    jia(context,value){
         context.commit('JIA',value)
     },
     jian(context,value){
         context.commit('JIAN',value)
     },
     jiaOdd(context,value){
-        context.commit('JIAODD',value)
+      if(context.state.sum%2)context.commit('JIA',value)
     },
     jiaAsync(context,value){
-        context.commit('JIAASYNC',value)
+        setTimeout(()=>{
+            context.commit('JIA',value)
+        },500)
     },
     
 }
-//創建一個mutations,值為一個對象，包含 n個真正用於加工狀態的函數
+//創建一個mutaions,值為一個對象，包含 n個真正用於加工狀態的函數
 const mutations = {
     JIA(state,value){
         state.sum += value
     },
     JIAN(state,value){
         state.sum -= value
-    },
-    JIAODD(state,value){
-        if(state.sum %2) state.sum += value
-    },
-    JIAASYNC(state,value){
-       setTimeout(()=>{
-        state.sum += value
-       },300)
     },
 }
 
